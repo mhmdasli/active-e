@@ -1,0 +1,48 @@
+{
+  "name": "active-e",
+  "author": {
+    "name": "Mohamad Ali",
+    "email": "m.ali2910@gmal.com"
+  },
+  "version": "1.0.0",
+  "description": "Activ-E",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "electron . --no-sandbox",
+    "packager-linux": "rimraf installers/active-e-linux-x64 && electron-packager . active-e --overwrite force --platform linux --arch x64 --out installers/ --icon icon.ico --asar --ignore=.gitignore --ignore=test_files",
+    "packager-win": "rimraf installers/active-e-win32-x64 && electron-packager . active-e --overwrite force --platform win32 --arch x64 --out installers/ --icon icon.ico --asar --ignore=.gitignore --ignore=test_files",
+    "installer-linux": "rimraf installers/linux-installer-x64 && electron-installer-debian --src installers/active-e-linux-x64/ --arch amd64 --dest installers/linux-installer-x64/ --icon icon.ico",
+    "installer-win": "npm run packager-win && electron-installer-windows --src installers/active-e-win32-x64/ --arch amd64 --dest installers/win-installer-x64/ --icon icon.ico",
+    "clean": "rimraf installers"
+  },
+  "dependencies": {
+    "arpping": "^2.0.0",
+    "chokidar": "^3.5.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "electron-packager": "^15.4.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-updater": "^4.1.2",
+    "electron-util": "^0.14.2",
+    "express": "~4.16.0",
+    "getmac": "^5.17.0",
+    "http-errors": "~1.6.2",
+    "internal-ip": "^6.2.0",
+    "local-devices": "^3.1.0",
+    "log4js": "^6.3.0",
+    "morgan": "~1.9.0",
+    "network": "^0.5.0",
+    "nodemon": "^1.19.1",
+    "public-ip": "^4.0.3",
+    "rimraf": "3.0.2",
+    "socket.io": "^4.3.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "electron": "^5.0.7",
+    "electron-installer-windows": "^2.0.0",
+    "electron-winstaller": "^3.0.4"
+  }
+}
